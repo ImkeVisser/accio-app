@@ -12,25 +12,25 @@ import { cn } from "@/utility/cn";
 interface CarouselProps {
     images: ImageType[]
     autoPlay?: boolean
+    containImage?: boolean
 }
 
-const Carousel = ({images, autoPlay = false}: CarouselProps) => {
+const Carousel = ({images, autoPlay = false, containImage = false}: CarouselProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
 
   useEffect(() => {
     if(!autoPlay) return
 
-    const timeoutId = setTimeout(() => {
+    const timeoutId = setInterval(() => {
         setActiveImageIndex(index => {
             if(index === images.length - 1) return 0
             return index + 1
         })
       }, 4000);
   
-      return () => clearTimeout(timeoutId);
+      return () => clearInterval(timeoutId);
   }, [autoPlay, images.length, activeImageIndex]);
-
 
   function showNextImage() {
     setActiveImageIndex(index => {
@@ -53,7 +53,7 @@ const Carousel = ({images, autoPlay = false}: CarouselProps) => {
                 <Image 
                     key={image.id} 
                     style={{translate: `${-100 * activeImageIndex}%`, transition: "translate 300ms ease-in-out"}} 
-                    className="w-full h-full block object-contain flex-shrink-0" 
+                    className={cn("w-full h-full block flex-shrink-0", containImage ? "object-contain" : "object-cover")}
                     src={image.url} alt={image.title}  
                     width={200} 
                     height={300}

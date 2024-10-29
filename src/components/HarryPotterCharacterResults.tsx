@@ -19,6 +19,12 @@ export default async function HarryPotterCharacterResults() {
     return (
       <>
         <h1 className="mb-4 text-2xl text-center">Accio Image</h1>
+        <div className="h-96 mb-8 max-w-screen-sm w-full m-auto">
+          <Carousel images={images} />
+        </div>
+        <div className="h-96 mb-8 max-w-screen-sm w-full m-auto">
+          <Carousel images={images} containImage />
+        </div>
         <div className="h-96 max-w-screen-sm w-full m-auto">
           <Carousel images={images} containImage autoPlay/>
         </div>

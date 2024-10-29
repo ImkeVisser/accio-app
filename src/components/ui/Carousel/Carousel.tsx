@@ -63,7 +63,7 @@ const Carousel = ({images, autoPlay = false, containImage = false}: CarouselProp
         </div>
         <CarouselButton className="left-0" onClick={showPreviousImage} aria-label="view previous image"><ChevronLeftCircle/></CarouselButton>
         <CarouselButton className="right-0" onClick={showNextImage} aria-label="view next image"><ChevronRightCircle /></CarouselButton>
-        <ul className="absolute -bottom-8 left-1/2 -translate-x-2/4 flex gap-1">
+        <ul className="absolute bottom-4 left-1/2 -translate-x-2/4 flex gap-1">
             {images.map((_, index) => (
                 <button key={index} onClick={() => setActiveImageIndex(index)} aria-label={`view image ${index +1}`}>
                   <Circle className={cn("w-4 hover:scale-110 focus-visible:scale-110 transition ease-in duration-100", index === activeImageIndex ? "fill-foreground" : "")} />

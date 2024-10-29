@@ -12,10 +12,9 @@ import { cn } from "@/utility/cn";
 interface CarouselProps {
     images: ImageType[]
     autoPlay?: boolean
-    containImage?: boolean
 }
 
-const Carousel = ({images, autoPlay = false, containImage = false}: CarouselProps) => {
+const Carousel = ({images, autoPlay = false}: CarouselProps) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
 
@@ -53,7 +52,7 @@ const Carousel = ({images, autoPlay = false, containImage = false}: CarouselProp
                 <Image 
                     key={image.id} 
                     style={{translate: `${-100 * activeImageIndex}%`, transition: "translate 300ms ease-in-out"}} 
-                    className={cn("w-full h-full block flex-shrink-0", containImage ? "object-contain" : "object-cover")}
+                    className="w-full h-full block object-cover flex-shrink-0"
                     src={image.url} alt={image.title}  
                     width={200} 
                     height={300}
